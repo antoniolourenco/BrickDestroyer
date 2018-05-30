@@ -1,12 +1,12 @@
 var tela = document.getElementById("tela"); //Referencia para a tela
-var ctx = canvas.getContext("2d"); //Referencia para as propriedades 2D da tela
+var ctx = tela.getContext("2d"); //Referencia para as propriedades 2D da tela
 
 var raioBola = 10; //Raio da bola
 
 //Posicao x e y da bola
 var x = tela.width/2;
 var y = tela.height-30;
-//Aceleracao x e y da bola
+//Velocidade x e y da bola
 var dx = 2;
 var dy = -2;
 
