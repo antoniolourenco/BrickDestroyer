@@ -1,5 +1,5 @@
 var tela = document.getElementById("tela"); //Referencia para a tela
-var ctx = canvas.getContext("2d"); //Referencia para as propriedades 2D da tela
+var ctx = tela.getContext("2d"); //Referencia para as propriedades 2D da tela
 
 var raioBola = 10; //Raio da bola
 
