@@ -29,6 +29,8 @@ var paddingTijolos = 10;
 var distanciaTijolosTopo = 30;
 var distanciaTijolosEsquerda = 30;
 
+var pontuacao = 0; //Guarda a pontuacao
+
 var tijolos = []; //Guarda a posicao dos tijolos
 
 //Coloca os tijolos dentro de um conjunto sem propriedades
@@ -71,6 +73,12 @@ function detetorColisoes() {
 				if(x > b.x && x < b.x+larguraTijolos && y > b.y && y < b.y+alturaTijolos) {
 					dy = -dy;
 					b.estado = 0;
+					pontuacao++;
+                    if(pontuacao == numLinhasTijolos*numColunasTijolos) {
+                        alert("GANHASTE! Um presente!");
+                        document.location.reload();
+                    }
+
 				}
 			}
 		}
@@ -114,6 +122,13 @@ function desenharTijolos() {
 	}
 }
 
+//Funcao que desenha a pontuacao
+function desenharPontuacao() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Pontuação: "+pontuacao, 8, 20);
+}
+
 //Funcao que desenha na tela
 function desenhar() {
 	ctx.clearRect(0, 0, tela.width, tela.height); //Limpa a tela
@@ -121,6 +136,7 @@ function desenhar() {
 	desenharBase(); //Chama a funcao que desenha a base
 	desenharTijolos(); //Chama a funcao que desenha os tijolos
 	detetorColisoes() //Trata das colisoes bola/tijolo
+	desenharPontuacao() //Atualiza a pontuacao
 
 //Colisões da bola com a tela
 	if(x + dx > tela.width-raioBola || x + dx < raioBola) {
